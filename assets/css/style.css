@@ -102,13 +102,97 @@ nav a:hover {
     color: #EC3636;
 }
 
+#burger,
+[for=burger] {
+    display: none;
+}
+
+@media screen and (max-width:581px) {
+    [for=burger] {
+        /* position: fixed; */
+        display: block;
+        /* top: 20px;
+        right: 20px; */
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        margin-top: 20px;
+        z-index: 1000;
+    }
+
+    .icon {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: #333;
+        position: relative;
+    }
+
+    .icon::before,
+    .icon::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background: #333;
+    }
+
+    .icon::before {
+        top: -8px;
+    }
+
+    .icon::after {
+        top: 8px;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 250px;
+        left: -100%;
+        height: 100%;
+        background: #f4f4f4;
+        z-index: 999;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 15px;
+        padding-top: 80px;
+    }
+
+    nav a {
+        display: block;
+        padding: 15px 30px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #burger:checked~nav {
+        left: 0;
+    }
+
+    #burger:checked~[for=burger] .icon::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    #burger:checked~[for=burger] .icon::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    #burger:checked~[for=burger] .icon {
+        background: transparent;
+    }
+}
+
 /* banner start */
 
 .banner {
     border-radius: 40px;
-    background: linear-gradient(90.27deg, #EC3636 14.62%, rgba(134, 30, 30, 0) 63.74%), url(../img/banner/image.png) no-repeat center center;
+    background: linear-gradient(90.27deg, #EC3636 14.62%, rgba(134, 30, 30, 0) 65.74%), url(../img/banner/image.png) no-repeat center center;
     background-size: cover;
-    height: 518px;
+    /* height: 518px; */
     padding: 70px;
 }
 
@@ -186,9 +270,13 @@ main {
 }
 
 .advantage-catalog {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 392px));
+    justify-content: center;
+    gap: 50px 0;
     margin: 70px 0;
 }
 
@@ -410,10 +498,9 @@ main {
 }
 
 .catalog-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(520px, 560px));
     gap: 50px;
 }
 
@@ -471,7 +558,8 @@ main {
 
 .promotion-content {
     background: url(../img/promtion/image.png) no-repeat;
-    height: 434px;
+    /* background-color: #000; */
+    /* height: 434px; */
     border-radius: 40px;
     margin-top: 70px;
     padding: 57px 80px;
@@ -542,16 +630,29 @@ main {
 
 /* reviews start */
 .reviews-content {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 380px));
+    gap: 30px;
+    justify-content: center;
     margin-top: 70px;
 }
 
 .review-item {
     border: 1px solid #EC3636;
     border-radius: 20px;
-    width: 380px;
+    /* width: 380px;*/
+    height: 248px;
+    padding: 35px;
+}
+
+.review-none {
+    border: 1px solid #EC3636;
+    border-radius: 20px;
+    /* width: 380px;*/
     height: 248px;
     padding: 35px;
 }
@@ -613,16 +714,19 @@ footer {
 }
 
 .footer-content {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: start; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
 }
 
 .footer-content nav {
     flex-direction: column;
     gap: 15px;
     text-align: center;
-    margin-left: 170px;
+    /* margin-left: 170px; */
 }
 
 .footer-content a {
@@ -1097,4 +1201,269 @@ details[open]>summary::after {
     flex: 1 1 auto;
     padding: 15px;
     overflow: auto;
+}
+
+@media (max-width: 1282px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .banner {
+        padding: 50px;
+    }
+
+    .promotion-content {
+        padding: 40px 50px;
+    }
+
+    .review-none {
+        display: none;
+    }
+
+    .reviews-content {
+        grid-template-columns: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .mt-120 {
+        margin-top: 70px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    .promotion-content {
+        padding: 40px 30px;
+    }
+
+    .footer-content a {
+        font-size: 12px;
+    }
+
+    .footer-content p {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .banner-left {
+        width: 300px;
+    }
+
+    main {
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 585px) {
+    .title-item h4 {
+        font-size: 11px;
+    }
+
+    .rectangle1 {
+        width: 24px;
+        height: 8px;
+        border-radius: 50px;
+    }
+
+    .rectangle {
+        width: 24px;
+        height: 8px;
+        border-radius: 50px;
+
+    }
+
+    .mt-120 {
+        margin-top: 50px;
+    }
+
+    .title-item p {
+        font-size: 7px;
+        margin: 6px 0 12px 0;
+    }
+
+    .item-l .btn-r {
+        margin-top: 14px;
+        padding: 5px 10px;
+    }
+
+    .item-description {
+        height: 29px;
+        width: 113px;
+        font-size: 5px;
+    }
+
+    .sale p {
+        font-size: 7px;
+    }
+
+    .btn-adaptate {
+        font-size: 5px;
+    }
+
+    .sale a {
+        font-size: 5px;
+    }
+
+    .item {
+        border-radius: 15px;
+        width: 277px;
+        height: 160px;
+        background-size: 180px;
+    }
+
+    .item-l {
+        margin: 17px 0 0 17px;
+    }
+
+    .promotion-content {
+        margin-top: 50px;
+    }
+
+    .reviews-content {
+        margin-top: 50px;
+    }
+
+    .sale {
+        margin-top: 15px;
+    }
+
+    .item2 {
+        border-radius: 15px;
+        width: 277px;
+        height: 160px;
+        background-size: 180px;
+    }
+
+    .item3 {
+        border-radius: 15px;
+        width: 277px;
+        height: 160px;
+        background-size: 180px;
+    }
+
+    .item4 {
+        border-radius: 15px;
+        width: 277px;
+        height: 160px;
+        background-size: 180px;
+    }
+
+    .catalog-content {
+        grid-template-columns: none;
+    }
+
+    footer {
+        padding: 50px;
+    }
+
+    .promotion-title h2 {
+        font-size: 25px;
+    }
+
+    .promotion-title p {
+        font-size: 15px;
+    }
+
+    .blur {
+        height: 30px;
+        background: rgba(236, 54, 54, 0.5);
+        filter: blur(28px);
+        width: 321px;
+    }
+
+    .promotion-description h2 {
+        font-size: 60px;
+    }
+
+    .promotion-description p {
+        font-size: 14px;
+    }
+
+    .promotion-l {
+        justify-content: center;
+        align-items: center;
+        width: 421px;
+    }
+
+    .banner {
+        padding: 25px;
+    }
+
+    .banner-left {
+        width: 260px;
+    }
+
+    .contact-r a {
+        font-size: 10px;
+    }
+
+    .contact-r p {
+        font-size: 10px;
+    }
+
+    .review-item p {
+        font-size: 10px;
+        width: 220px;
+    }
+
+    .catalog-content {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 485px) {
+    .promotion-l {
+        width: 321px;
+    }
+}
+
+@media (max-width: 362px) {
+    .promotion-l {
+        width: 221px;
+        align-items: center;
+    }
+
+    .promotion-content {
+        background-color: #0D0D0D;
+        border-radius: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .promotion-title h2 {
+        font-size: 20px;
+    }
+
+    .promotion-title p {
+        font-size: 10px;
+    }
+
+    .promotion-buy .btn-r {
+        font-size: 7px;
+    }
+
+    .contact-r a {
+        font-size: 7px;
+    }
+
+    .contact-r p {
+        font-size: 7px;
+    }
+
+    .promotion-description p {
+        font-size: 10px;
+    }
+
+    .blur {
+        width: 230px;
+    }
+
+    .banner {
+        background: linear-gradient(90.27deg, #EC3636 24.62%, rgba(134, 30, 30, 0) 95.74%), url(../img/banner/image.png) no-repeat center center;
+    }
 }
